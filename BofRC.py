@@ -21,18 +21,13 @@
 
 #Import
 import sys
-
 import os
-
 from pydbg import *
-
 from pydbg.defines import *
-
 import utils
 
 
 #Variable
-
 junk=str()
 
 
@@ -45,15 +40,10 @@ def GetPidByName(debug, exe):
 #Crash record func
 
 def segfault(dbg):
-
   crash_bin = utils.crash_binning.crash_binning()
-
   crash_bin.record_crash(dbg)
-
   print crash_bin.crash_synopsis()
-
   dbg.terminate_process()
-
   return DBG_EXCEPTION_NOT_HANDLED
 
 
@@ -71,36 +61,22 @@ if len(sys.argv)<3:
 if len(sys.argv)==4:
  #Create junk
  if sys.argv[1].lower()=="run":
-
   for i in xrange(int(sys.argv[3])):
-
    if i%2:
-
     junk+="\x37\x13"
 
-
   #Create command
-
   cmd=str(sys.argv[1])+" "+junk
   #Clear CLI
-
   os.system("cls")
 
-
   #Print infos and launch debug
-
   print "\nPE name: %s " %sys.argv[2]
-
   print "Args Len: %s" %len(junk)
-
   dbg.load(sys.argv[2],junk)
-
   dbg.set_callback(EXCEPTION_ACCESS_VIOLATION,segfault)
-
   print "\nLaunching PE \n\n{"
-
   dbg.debug_event_loop()
-
   print "}"
  else:
   print "Error!\n"
@@ -111,19 +87,12 @@ if len(sys.argv)==3:
   os.system("cls")
   #Get pid by PE name, print and debug
   pid=GetPidByName(dbg,sys.argv[2])
-
   print "\nPE name: %s " %sys.argv[2]
   print "\nPE PID: %s " %pid
-
   dbg.attach(int(pid))
-
   dbg.set_callback(EXCEPTION_ACCESS_VIOLATION,segfault)
-
   print "\nAttaching to PE \n\n{"
-
   dbg.debug_event_loop()
-
   print "}"
-
  else:
   print "Error!\n"
