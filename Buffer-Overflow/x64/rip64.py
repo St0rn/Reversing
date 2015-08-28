@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+#
+# Author: St0rn
+# Site: st0rn.anbu-pentest.com
+#
+
 from sys import argv
 
 infos="""Exploit skeleton generation:
