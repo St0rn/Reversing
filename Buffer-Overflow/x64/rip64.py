@@ -4,6 +4,8 @@
 # Site: st0rn.anbu-pentest.com
 #
 # Platform: Linux x64
+# Description:
+# Generate cyclic pattern, find RIP control offset and generate exploit skeleton (vanilla RIP and Ret2Libc)
 #
 
 from sys import argv
