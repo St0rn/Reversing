@@ -3,6 +3,8 @@
 # Author: St0rn
 # Site: st0rn.anbu-pentest.com
 #
+# Platform: Linux x64
+#
 
 from sys import argv
 
